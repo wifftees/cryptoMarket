@@ -1,12 +1,13 @@
-const prod = process.env.NODE_ENV === "production"
+const prod = process.env.NODE_ENV === 'production'
 
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: prod ? "production" : "development",
-    entry: "./src/index.tsx",
+    mode: prod ? 'production' : 'development',
+    entry: './src/index.tsx',
     output: {
-        path: __dirname + "/dist/"
+        path: `${__dirname}/dist/`,
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -14,33 +15,34 @@ module.exports = {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 resolve: {
-                    extensions: [".ts", ".tsx", ".js", ".json"]
+                    extensions: ['.ts', '.tsx', '.js', '.json'],
                 },
-                use: "ts-loader",
-            }, 
+                use: 'ts-loader',
+            },
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             importLoaders: 1,
                             modules: true,
-                        }
+                        },
                     },
-                    "sass-loader"
-                ]
-            }
-        ]
+                    'sass-loader',
+                ],
+            },
+        ],
     },
-    devtool: prod ? undefined : "source-map",
+    devtool: prod ? undefined : 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            template: "index.html",
+            template: 'index.html',
         }),
     ],
     devServer: {
-        open: true
-    }
+        open: true,
+        historyApiFallback: true,
+    },
 }
