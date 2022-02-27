@@ -34,10 +34,17 @@
             {
                 "singleQuote": true,
                 "trailingComma": "es5", // no trailing commas in type parameters
-                "tabWidth": 2,
-                "semi": true
+                "tabWidth": 4,
+                "semi": false,
+                "endOfLine": "auto"
             }
-        ] // disable conflict between eslint and prettier by rewriting eslint rules 
+        ], // disable conflict between eslint and prettier by rewriting eslint rules 
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "off"
+        ] // disabling couse the same rule inside typescript extension
+        
     },
     "settings": {
         "import/parsers": {
