@@ -1,3 +1,4 @@
+import './styles/app.module.scss'
 import React, { StrictMode, Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import { CircularProgress } from '@mui/material'
@@ -8,12 +9,14 @@ import {
     Navigate,
 } from 'react-router-dom'
 import routes from './constants/routes'
+import Navbar from './components/navbar/Navbar'
 
 function AppContainer() {
     return (
         <StrictMode>
             <Suspense fallback={<CircularProgress />}>
                 <Router>
+                    <Navbar />
                     <Routes>
                         <Route
                             path="/"

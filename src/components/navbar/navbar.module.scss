@@ -1,3 +1,58 @@
+@import "../../styles/_variables";
+
 .navbar {
-  background-color: bisque;
+  position: fixed;
+  padding: 0 16px 0;
+  width: fit-content;
+  height: 100%;
+  border-right: 2px solid $borderColor;
+
+  .title {
+    padding: 32px 16px 32px;
+
+    h1 {
+      color: $mainColor;
+      font-weight: $bold;
+    }
+  }
+
+  ul {
+    margin-top: 32px;
+
+    li {
+      border-radius: $rounded;
+      padding: 20px 0 20px 12px;
+      transition: 0.1s ease-in;
+
+      &:hover {
+        background-color: $captionColor;
+      }
+
+      a {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        .icon {
+          border-radius: $circle;
+          background-color: $captionColor;
+          height: 32px;
+          width: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .iconImage {
+            height: 24px;
+            width: 24px;
+          }
+        }
+
+        span {
+          font-weight: $medium;
+          font-size: 0.64rem;
+        }
+      }
+    }
+  }
 }
