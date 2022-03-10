@@ -43,8 +43,15 @@
         "prefer-arrow-callback": "off",
         "@typescript-eslint/no-unused-vars": [
             "off"
-        ] // disabling couse the same rule inside typescript extension
-        
+        ], // disabling couse the same rule inside typescript extension
+        "import/prefer-default-export": "off",
+        "no-param-reassign": "off", // couse using redux-toolkit
+        "jsx-a11y/click-events-have-key-events": "off",
+        "no-console": "off",
+        "no-alert": "off",
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-types": "off"
     },
     "settings": {
         "import/parsers": {

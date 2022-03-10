@@ -4,7 +4,8 @@
   "description": "y",
   "main": "y",
   "scripts": {
-    "start": "webpack serve --port 3000",
+    "start-hot": "webpack-dev-server --mode development --hot --open",
+    "start": "webpack-dev-server --mode development --open",
     "build": "set NODE_ENV=production && webpack",
     "lint": "npx eslint . --ext .ts,.tsx",
     "prepare": "husky install"
@@ -17,11 +18,13 @@
   },
   "homepage": "https://github.com/wifftees/cryptoMarket#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-router": "^5.1.18",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "cors": "^2.8.5",
     "css-loader": "^6.6.0",
     "eslint": "8.2.0",
     "eslint-config-airbnb": "19.0.4",
@@ -45,15 +48,26 @@
     "typescript-plugin-css-modules": "^3.4.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "webpack-mock-server": "^1.0.15"
   },
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.4.3",
+    "@mui/material": "^5.4.4",
+    "@reduxjs/toolkit": "^1.8.0",
+    "@types/react-redux": "^7.1.22",
+    "axios": "^0.26.0",
+    "formik": "^2.2.9",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-redux": "^7.2.6",
     "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1"
+    "react-router-dom": "^6.2.1",
+    "redux-persist": "^6.0.0",
+    "sanitize.css": "^13.0.0",
+    "yup": "^0.32.11"
   }
 }

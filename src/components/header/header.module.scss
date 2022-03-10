@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  border-bottom: 2px solid $borderColor;
+
+  h2 {
+    font-size: 0.8rem;
+    font-weight: $bold;
+  }
+}

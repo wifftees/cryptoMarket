@@ -1,0 +1,60 @@
+@import "../../../styles/variables.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  gap: 24px;
+
+  .names {
+    display: flex;
+    gap: 16px;
+  }
+
+  input {
+    border: 2px solid $borderColor;
+    padding: 12px 24px 12px;
+    width: 100%;
+    border-radius: $rounded;
+    box-sizing: border-box;
+    font-size: 0.512rem;
+    font-weight: $bold;
+
+    &::placeholder {
+      color: $borderColor;
+      font-size: 0.512rem;
+      font-weight: $bold;
+    }
+  }
+
+  button {
+    padding: 16px 16px;
+    background-color: $mainColor;
+    border-radius: $rounded;
+    cursor: pointer;
+    color: white;
+    font-weight: $bold;
+    font-size: 0.512rem;
+  }
+
+  .disabled {
+    opacity: 0.5;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    span {
+      margin-left: 24px;
+      color: red;
+      font-size: 0.512rem;
+      font-weight: $light;
+    }
+  }
+
+  .errorInput {
+    border-color: red;
+  }
+}

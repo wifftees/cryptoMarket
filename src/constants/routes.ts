@@ -1,15 +1,12 @@
 import { lazy } from 'react'
-import Home from '../pages/home/Home'
 
 const Profile = lazy(() => import('../pages/profile/Profile'))
 const TokensList = lazy(() => import('../pages/tokensList/TokensList'))
 const Token = lazy(() => import('../pages/token/Token'))
+const Register = lazy(() => import('../pages/register/Register'))
+const Login = lazy(() => import('../pages/login/Login'))
 
 const routes = [
-    {
-        path: '/home',
-        Element: Home,
-    },
     {
         path: '/profile',
         Element: Profile,
@@ -21,6 +18,14 @@ const routes = [
     {
         path: '/tokenslist/token',
         Element: Token,
+    },
+    {
+        path: '/login',
+        Element: Login,
+    },
+    {
+        path: '/register',
+        Element: Register,
     },
 ]
 

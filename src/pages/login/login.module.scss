@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.profile {
+.login {
   margin-left: 219px;
   display: flex;
   flex-direction: column;
@@ -13,12 +13,9 @@
       height: fit-content;
       border-radius: $rounded;
       padding: 32px;
-
-      .border {
-        margin: 32px 32px;
-        height: 2px;
-        background-color: $borderColor;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

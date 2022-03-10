@@ -1,45 +1,52 @@
 import './styles/app.module.scss'
 import React, { StrictMode, Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import { CircularProgress } from '@mui/material'
+import { Provider } from 'react-redux'
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     Navigate,
 } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
+import Spinner from './components/spinner/Spinner'
 import routes from './constants/routes'
 import Navbar from './components/navbar/Navbar'
+import { store, persistor } from './redux/store/store'
 
-function AppContainer() {
+export default function AppContainer() {
     return (
         <StrictMode>
-            <Suspense fallback={<CircularProgress />}>
-                <Router>
-                    <Navbar />
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Navigate to="/home" replace />}
-                        />
-                        <Route
-                            path="/token"
-                            element={
-                                <Navigate to="/tokenslist/token" replace />
-                            }
-                        />
-                        {routes.map(({ path, Element }) => (
-                            <Route
-                                key={path}
-                                path={path}
-                                element={<Element />}
-                            /> // sensitive letter case
-                        ))}
-                    </Routes>
-                </Router>
-            </Suspense>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <Suspense fallback={<Spinner />}>
+                        <Router>
+                            <Navbar />
+                            <Routes>
+                                <Route
+                                    path="/"
+                                    element={<Navigate to="/profile" replace />}
+                                />
+                                <Route
+                                    path="/token"
+                                    element={
+                                        <Navigate
+                                            to="/tokenslist/token"
+                                            replace
+                                        />
+                                    }
+                                />
+                                {routes.map(({ path, Element }) => (
+                                    <Route
+                                        key={path}
+                                        path={path}
+                                        element={<Element />}
+                                    /> // sensitive letter case
+                                ))}
+                            </Routes>
+                        </Router>
+                    </Suspense>
+                </PersistGate>
+            </Provider>
         </StrictMode>
     )
 }
-
-ReactDOM.render(<AppContainer />, document.getElementById('app-root'))

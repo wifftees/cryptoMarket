@@ -24,7 +24,6 @@
         "incremental": true,
         "noFallthroughCasesInSwitch": true,
         "outDir": "build", // set folder where would store compiled ts code
-        "rootDir": "src", // set folder where typescript would allow type checkin
         "plugins": [
             { "name": "typescript-plugin-css-modules" } // allow typescript work properly with css/sass modules 
         ]

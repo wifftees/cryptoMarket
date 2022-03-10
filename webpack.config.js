@@ -1,13 +1,17 @@
 const prod = process.env.NODE_ENV === 'production'
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpackMockServer = require("webpack-mock-server")
 
 module.exports = {
     mode: prod ? 'production' : 'development',
-    entry: './src/App.tsx',
+    entry: {
+        'app': './src/index.tsx',
+        'css': './src/styles/main.css'
+    },
     output: {
-        path: `${__dirname}/dist/`,
-        publicPath: '/',
+        filename: '[name].js',
+        path: `${__dirname}/dist`
     },
     module: {
         rules: [
@@ -20,7 +24,7 @@ module.exports = {
                 use: 'ts-loader',
             },
             {
-                test: /\.scss$/,
+                test: /\.css$|\.scss$/,
                 use: [
                     'style-loader',
                     {
@@ -32,17 +36,44 @@ module.exports = {
                     },
                     'sass-loader',
                 ],
+                include: /\.module\.scss$/,
+            },
+            {
+                test: /\.css$|\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
+                exclude:  /\.module\.scss$/,
             },
         ],
     },
     devtool: prod ? undefined : 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: 'src/index.html',
         }),
     ],
     devServer: {
         open: true,
         historyApiFallback: true,
+        hot: true,
+        onBeforeSetupMiddleware: (devServer) => 
+            webpackMockServer.use(devServer.app, {
+                entry: [
+                    './webpack.mock.ts'
+                ],
+                before: (req, res, next) => { // you can use this for custom-logging instead of logResponses: true, logRequests: true
+                    console.log(`Got request: ${req.method} ${req.url}`);
+                    res.once("finish", () => {
+                        console.log(`Sent response: ${req.method} ${req.url}`);
+                    })
+                    next();
+                }
+            })
     },
+    optimization: {
+        runtimeChunk: 'single'
+    }
 }

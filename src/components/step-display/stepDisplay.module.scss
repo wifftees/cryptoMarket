@@ -1,0 +1,50 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  margin: 0 32px 0;
+  justify-content: space-between;
+  align-items: center;
+
+  .stepText {
+    display: flex;
+    flex-direction: column;
+
+    .stepNumber {
+      font-size: 0.512rem;
+      font-weight: $regular;
+    }
+
+    .stepName {
+      font-size: 0.8rem;
+      font-weight: $bold;
+    }
+  }
+
+  .progress {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    .bar {
+      width: 600px;
+      height: 5px;
+
+      .empty {
+        background-color: $captionColor;
+        border-radius: $rounded;
+
+        .filled {
+          height: 5px;
+          background-color: $mainColor;
+          border-radius: $rounded;
+        }
+      }
+    }
+
+    .completedSteps {
+      font-size: 0.512rem;
+      font-weight: $medium;
+    }
+  }
+}
