@@ -1,0 +1,68 @@
+@import "../../../styles/variables";
+
+.token {
+  font-weight: $bold;
+  padding: 32px 16px 32px;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+
+  td {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: end;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  td:last-child {
+    padding-right: 32px;
+  }
+  td:first-child {
+    padding-left: 32px;
+  }
+
+  &:hover {
+    background-color: $captionColor;
+  }
+
+  .avatar {
+    background-color: $correctColor;
+    border-radius: $circle;
+    width: 32px;
+    height: 32px;
+  }
+
+  .emptyAvatar {
+    background-color: $borderColor;
+    border-radius: $circle;
+    width: 32px;
+    height: 32px;
+  }
+
+  .marketCap {
+    text-align: end;
+  }
+
+  .volume {
+    text-align: end;
+  }
+
+  .price {
+    text-align: end;
+  }
+
+  .change {
+    text-align: end;
+  }
+
+  .action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .empty {
+    background-color: $borderColor;
+    width: 50px;
+    height: 32px;
+  }
+}

@@ -5,29 +5,29 @@ import {
 } from '../actions/userActions'
 
 export type UserState = {
-    user: boolean
+    isUser: boolean
 }
 
 const initialState: UserState = {
-    user: false,
+    isUser: false,
 }
-
-export const userSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
         signInUserInLocalStorage(state) {
-            state.user = true
+            state.isUser = true
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(writeUserToLocalStorage.fulfilled, (state) => {
-            state.user = true
-        })
-        builder.addCase(deleteUserFromLocalStorage.fulfilled, (state) => {
-            state.user = false
-        })
+        builder
+            .addCase(writeUserToLocalStorage.fulfilled, (state) => {
+                state.isUser = true
+            })
+            .addCase(deleteUserFromLocalStorage.fulfilled, (state) => {
+                state.isUser = false
+            })
     },
 })
 
-export default userSlice.reducer
+export default userSlice

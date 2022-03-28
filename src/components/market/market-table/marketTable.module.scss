@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+
+.table {
+	border-collapse: separate;
+	border-spacing: 0 15px;
+
+	th {
+		display: flex;
+		align-items: center;
+		align-content: center;
+
+		td {
+			margin: 0 auto;
+			border: 2px solid $borderColor;
+		}
+	}
+	.head {
+		padding: 32px 16px 32px;
+		font-weight: $light;
+		white-space: nowrap;
+		text-align: left;
+
+		.name {
+			text-align: right;
+		}
+		.marketCap {
+			padding: 0px 0px 0px 150px;
+		}
+
+		.volume {
+			padding: 0px 0px 0px 150px;
+		}
+
+		.price {
+			padding: 0px 0px 0px 150px;
+		}
+
+		.change {
+			padding: 0px 0px 0px 100px;
+		}
+
+		.action {
+			text-align: center;
+			width: 100%;
+		}
+	}
+}
+
+.empty {
+	margin-top: 32px;
+	text-align: center;
+}

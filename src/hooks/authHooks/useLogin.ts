@@ -1,42 +1,34 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { sendLoginValues } from '../../api/authApi'
-import { DialogData } from '../../components/dialog-window/DialogWindow'
+import { sendLoginValues } from '../../redux/actions/authActions'
+import authSlice from '../../redux/reducers/authReducer'
 import { writeUserToLocalStorage } from '../../redux/actions/userActions'
+import { getAuth } from '../../redux/selectors/authSelectors'
 import { LoginFormValues } from '../../types/User'
-import { useAppDispatch } from '../redux'
+import { useAppDispatch, useAppSelector } from '../redux'
 
 export const useLoginData = () => {
-    const [dialogData, setDialogData] = useState<DialogData>({
-        open: false,
-        title: '',
-        message: '',
-    })
-
+    const { open, email, title, message, isError } = useAppSelector(getAuth)
+    const { closeAuthState } = authSlice.actions
     const dispatch = useAppDispatch()
-
     const history = useNavigate()
 
-    const handleClose = () => setDialogData({ open: false })
-
-    const submit = async (values: LoginFormValues) => {
-        const response = await sendLoginValues(values)
-        const { error, message } = response
-        setDialogData({
-            open: true,
-            error: Boolean(error),
-            title: error ? 'Error' : 'Successful',
-            message,
-        })
-        if (!error) {
-            dispatch(writeUserToLocalStorage(values.email))
-            history('/profile')
-        }
-    }
+    const dialogData = { open, title, message }
 
     const loginInitialValues: LoginFormValues = {
         email: '',
         password: '',
+    }
+
+    const handleClose = async () => {
+        dispatch(closeAuthState())
+        if (!isError && email) {
+            await dispatch(writeUserToLocalStorage(email))
+            history('/profile')
+        }
+    }
+
+    const submit = async (values: LoginFormValues) => {
+        dispatch(sendLoginValues(values))
     }
 
     return {

@@ -1,4 +1,3 @@
-import './styles/app.module.scss'
 import React, { StrictMode, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import {
@@ -7,33 +6,26 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/integration/react'
-import Spinner from './components/spinner/Spinner'
+import { CircularProgress } from '@mui/material'
+import styles from './styles/app.module.scss'
 import routes from './constants/routes'
 import Navbar from './components/navbar/Navbar'
-import { store, persistor } from './redux/store/store'
+import { store } from './redux/store/store'
+import Header from './components/header/Header'
 
 export default function AppContainer() {
     return (
         <StrictMode>
             <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor}>
-                    <Suspense fallback={<Spinner />}>
-                        <Router>
-                            <Navbar />
+                <Suspense fallback={<CircularProgress />}>
+                    <Router>
+                        <Navbar />
+                        <div className={styles.wrapper}>
+                            <Header />
                             <Routes>
                                 <Route
-                                    path="/"
+                                    path="*"
                                     element={<Navigate to="/profile" replace />}
-                                />
-                                <Route
-                                    path="/token"
-                                    element={
-                                        <Navigate
-                                            to="/tokenslist/token"
-                                            replace
-                                        />
-                                    }
                                 />
                                 {routes.map(({ path, Element }) => (
                                     <Route
@@ -43,9 +35,9 @@ export default function AppContainer() {
                                     /> // sensitive letter case
                                 ))}
                             </Routes>
-                        </Router>
-                    </Suspense>
-                </PersistGate>
+                        </div>
+                    </Router>
+                </Suspense>
             </Provider>
         </StrictMode>
     )

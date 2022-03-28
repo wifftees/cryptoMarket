@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import styles from './authForm.module.scss'
 import { validateLoginForm } from '../../../helpers/validateForms'
-import DialogWindow from '../../dialog-window/DialogWindow'
+import DialogWindow from '../../common/dialog-window/DialogWindow'
 import { useLoginData } from '../../../hooks/authHooks/useLogin'
 
 export default function LoginForm() {

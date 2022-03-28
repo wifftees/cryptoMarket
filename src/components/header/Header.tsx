@@ -1,11 +1,17 @@
 import React from 'react'
+import { useLocation } from 'react-router'
+import {
+    capitalizeFirstLetter,
+    reverseString,
+} from '../../helpers/stringHelpers'
 import styles from './header.module.scss'
 
-type HeaderProps = {
-    pageName: string
-}
-
-export default function Header({ pageName }: HeaderProps) {
+export default function Header() {
+    const location = useLocation()
+    const regEx = /^[^/]*/
+    const reversedPath = reverseString(location.pathname)
+    const revesedPagenName = String(reversedPath.match(regEx))
+    const pageName = capitalizeFirstLetter(reverseString(revesedPagenName))
     return (
         <header className={styles.header}>
             <h2>{pageName}</h2>

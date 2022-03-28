@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+
+.starEnabled {
+	cursor: pointer;
+	color: $mainColor;
+    width: 32px;
+    height: 32px;
+    transition: 0.1s ease-in;
+}
+.starDisabled {
+	cursor: pointer;
+	color: $borderColor;
+    width: 32px;
+    height: 32px;
+    transition: 0.1s ease-in;
+}

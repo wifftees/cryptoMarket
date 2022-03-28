@@ -1,44 +1,34 @@
-import { configureStore } from '@reduxjs/toolkit'
-import {
-    persistStore,
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { marketAPI } from '../../api/marketApi'
+import { tokenAPI } from '../../api/tokenApi'
+import { userAPI } from '../../api/userApi'
+import { wathlistAPI } from '../../api/watchlistApi'
+import authSlice from '../reducers/authReducer'
+import userSlice from '../reducers/userReducer'
 
-import rootReducer from '../reducers/rootReducer'
-
-const persistConfig = {
-    key: 'root',
-    version: 1,
-    storage,
+const reducers = {
+    user: userSlice.reducer,
+    auth: authSlice.reducer,
+    [wathlistAPI.reducerPath]: wathlistAPI.reducer,
+    [userAPI.reducerPath]: userAPI.reducer,
+    [marketAPI.reducerPath]: marketAPI.reducer,
+    [tokenAPI.reducerPath]: tokenAPI.reducer,
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [
-                    FLUSH,
-                    REHYDRATE,
-                    PAUSE,
-                    PERSIST,
-                    PURGE,
-                    REGISTER,
-                ],
-            },
-        }),
+const rootReducer = combineReducers({
+    ...reducers,
 })
 
-export const persistor = persistStore(store)
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(
+            wathlistAPI.middleware,
+            userAPI.middleware,
+            marketAPI.middleware,
+            tokenAPI.middleware
+        ),
+})
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

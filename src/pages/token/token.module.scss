@@ -1,0 +1,84 @@
+@import "../../styles/variables";
+
+.content {
+	padding: 32px 64px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	.container {
+		.header {
+			display: flex;
+			align-items: center;
+			gap: 128px;
+			margin-bottom: 32px;
+
+			.mainInfo {
+				display: flex;
+				align-items: center;
+				gap: 32px;
+
+				.avatar {
+					width: 64px;
+					height: 64px;
+					border-radius: $circle;
+					background-color: $correctColor;
+				}
+
+				.mainInfoText {
+					display: flex;
+					flex-direction: column;
+
+					.tokenNames {
+						display: flex;
+						font-weight: $bold;
+						font-size: 1.563rem;
+						gap: 8px;
+
+						.nameSymbol {
+							color: $borderColor;
+						}
+					}
+
+					.tokenStatus {
+						font-weight: $regular;
+					}
+				}
+			}
+
+			.button {
+				padding: 16px 32px 16px;
+				display: flex;
+				align-items: center;
+				gap: 32px;
+				font-weight: $medium;
+				border-radius: $rounded;
+				border: 2px solid $borderColor;
+			}
+		}
+		.dropdown {
+			display: flex;
+			padding: 0px 16px 0px;
+			justify-content: flex-end;
+		}
+
+		.chart {
+			canvas {
+				height: 400px;
+			}
+		}
+
+		.statsTitle {
+			margin-top: 32px;
+			font-weight: $bold;
+		}
+
+		.stats {
+			margin-top: 16px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			font-weight: $regular;
+			row-gap: 8px;
+		}
+	}
+}

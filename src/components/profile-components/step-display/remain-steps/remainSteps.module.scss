@@ -1,0 +1,16 @@
+@import "../../../../styles/variables";
+
+.remainSteps {
+  padding: 32px;
+
+  .title {
+    font-weight: $medium;
+    margin-bottom: 32px;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

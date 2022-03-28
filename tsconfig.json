@@ -1,11 +1,8 @@
 {
     "compilerOptions": {
         "target": "esnext",
-        "lib": [
-            "DOM",
-            "DOM.Iterable",
-            "ESNext"
-        ],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "noImplicitAny": true,
         "allowJs": false,
         "skipLibCheck": true,
         "esModuleInterop": true,
@@ -25,10 +22,8 @@
         "noFallthroughCasesInSwitch": true,
         "outDir": "build", // set folder where would store compiled ts code
         "plugins": [
-            { "name": "typescript-plugin-css-modules" } // allow typescript work properly with css/sass modules 
+            { "name": "typescript-plugin-css-modules" } // allow typescript work properly with css/sass modules
         ]
     },
-    "exclude": [
-        "node_modules"
-    ]
+    "exclude": ["node_modules"]
 }

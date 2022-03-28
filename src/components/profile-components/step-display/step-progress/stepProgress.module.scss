@@ -1,0 +1,61 @@
+@import "../../../../styles/variables";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 32px 0px;
+
+  .userInfo {
+    display: flex;
+    gap: 24px;
+    .avatar {
+      border-radius: $rounded;
+      background-color: black;
+      height: 100%;
+      width: 0;
+      padding-bottom: 20%;
+    }
+
+    .stepText {
+      display: flex;
+      flex-direction: column;
+
+      .stepNumber {
+        font-weight: $regular;
+      }
+
+      .stepName {
+        font-size: 2rem;
+        font-weight: $bold;
+      }
+    }
+  }
+
+  .progress {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    .bar {
+      width: 600px;
+      height: 5px;
+
+      .empty {
+        background-color: $captionColor;
+        border-radius: $rounded;
+
+        .filled {
+          height: 5px;
+          background-color: $mainColor;
+          border-radius: $rounded;
+          transition: 0.3s ease;
+        }
+      }
+    }
+
+    .completedSteps {
+      font-weight: $medium;
+    }
+  }
+}

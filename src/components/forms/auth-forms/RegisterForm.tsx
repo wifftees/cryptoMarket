@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
-import DialogWindow from '../../dialog-window/DialogWindow'
+import DialogWindow from '../../common/dialog-window/DialogWindow'
 import { validateRegistrationForm } from '../../../helpers/validateForms'
 import { useRegisterData } from '../../../hooks/authHooks/useRegister'
 import styles from './authForm.module.scss'

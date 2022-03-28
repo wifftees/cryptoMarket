@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+.token {
+
+	.name {
+		background-color: $borderColor;
+		width: 50px;
+		height: 20px;
+	}
+
+	.marketCap {
+		background-color: $borderColor;
+		width: 50px;
+		height: 20px;
+	}
+
+	.volume {
+		background-color: $borderColor;
+		width: 50px;
+		height: 20px;
+	}
+
+	.price {
+		background-color: $borderColor;
+		width: 50px;
+		height: 20px;
+	}
+
+	.change {
+		background-color: $borderColor;
+		width: 50px;
+		height: 20px;
+	}
+
+	.action {
+		display: flex;
+		justify-content: center;
+	}
+}

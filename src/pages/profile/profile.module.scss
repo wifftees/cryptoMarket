@@ -1,24 +1,14 @@
 @import "../../styles/variables.scss";
 
-.profile {
-  margin-left: 219px;
+.content {
+  padding: 32px 64px 32px;
   display: flex;
   flex-direction: column;
+  gap: 24px;
 
-  .content {
-    padding: 32px 64px 32px;
-
-    .container {
-      border: 2px solid $borderColor;
-      height: fit-content;
-      border-radius: $rounded;
-      padding: 32px;
-
-      .border {
-        margin: 32px 32px;
-        height: 2px;
-        background-color: $borderColor;
-      }
-    }
+  .container {
+    border: 2px solid $borderColor;
+    height: fit-content;
+    border-radius: $rounded;
   }
 }

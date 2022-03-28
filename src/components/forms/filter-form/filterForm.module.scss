@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+
+.filters {
+	flex: 0 1 25%;
+	padding: 25px;
+	border-radius: $rounded;
+	border: 2px solid $borderColor;
+	text-align: center;
+
+	.title {
+		line-height: 30px;
+		font-size: 2rem;
+		font-weight: $medium;
+	}
+
+	.fieldsContainer {
+		margin-top: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		font-weight: $light;
+
+		.field {
+			h2 {
+				margin-bottom: 16px;
+			}
+
+			.numberFields {
+				display: flex;
+				gap: 8px;
+			}
+
+			.radio {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+			}
+
+			.checkboxes {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+			}
+		}
+	}
+
+	.button {
+		margin-top: 16px;
+		display: flex;
+		justify-content: center;
+	}
+}

@@ -3,4 +3,6 @@
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
+    "editor.tabCompletion": "on",
+    "editor.snippetSuggestions": "top"
 }

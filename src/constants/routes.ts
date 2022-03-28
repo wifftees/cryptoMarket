@@ -1,10 +1,11 @@
 import { lazy } from 'react'
 
 const Profile = lazy(() => import('../pages/profile/Profile'))
-const TokensList = lazy(() => import('../pages/tokensList/TokensList'))
+const TokenList = lazy(() => import('../pages/market/Market'))
 const Token = lazy(() => import('../pages/token/Token'))
 const Register = lazy(() => import('../pages/register/Register'))
 const Login = lazy(() => import('../pages/login/Login'))
+const ErrorPage = lazy(() => import('../pages/error/Error'))
 
 const routes = [
     {
@@ -12,12 +13,12 @@ const routes = [
         Element: Profile,
     },
     {
-        path: '/tokenslist',
-        Element: TokensList,
+        path: '/market/:token',
+        Element: Token,
     },
     {
-        path: '/tokenslist/token',
-        Element: Token,
+        path: '/market',
+        Element: TokenList,
     },
     {
         path: '/login',
@@ -26,6 +27,10 @@ const routes = [
     {
         path: '/register',
         Element: Register,
+    },
+    {
+        path: '/error',
+        Element: ErrorPage,
     },
 ]
 

@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.content {
+  padding: 32px 64px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .container {
+    height: fit-content;
+    display: flex;
+    gap: 32px;
+
+    .tokenList {
+      flex: 0 1 75%;
+
+      .header {
+        display: flex;
+        align-items: center;
+        margin: 0px 0px 32px 0px;
+      }
+    }
+  }
+}

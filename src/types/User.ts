@@ -11,11 +11,17 @@ export type LoginFormValues = {
     password: string
 }
 
+export type UserSteps = {
+    profileStep: boolean
+    descriptionStep: boolean
+}
+
 export type User = {
     firstName: string
     secondName: string
     email: string
     password: string
-    avatar: string
     description: string
 }
+
+export type UserProfileData = Omit<User, 'email' | 'password'>

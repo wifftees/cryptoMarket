@@ -1,0 +1,26 @@
+@import "../../../styles/variables";
+
+.tags {
+	flex: 1 1 60%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 24px;
+
+	.tag {
+		display: flex;
+		align-items: center;
+		border-radius: $rounded;
+		border: 2px solid $borderColor;
+		padding: 10px;
+		gap: 8px;
+		cursor: pointer;
+
+		.icon {
+			height: 16px;
+			width: 16px;
+		}
+	}
+	.active {
+		border: 2px solid $mainColor;
+	}
+}

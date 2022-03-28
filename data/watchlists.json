@@ -1,0 +1,14 @@
+[
+    {
+        "user": "test@mail.ru",
+        "tokens": [
+            {
+                "id": "dsss-s1",
+                "avatar": "somePath",
+                "name": "solana",
+                "currentPrice": "2689",
+                "change": "3.90"
+            }
+        ]
+    }
+]

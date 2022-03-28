@@ -1,0 +1,40 @@
+@import "../../../../../styles/variables";
+
+.step {
+  border: 1px solid $captionColor;
+  border-radius: $rounded;
+  cursor: pointer;
+
+  .closed {
+    background-color: $captionColor;
+    padding: 16px 32px 16px;
+    border-radius: inherit;
+
+    .content {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      .title {
+        font-weight: $medium;
+        color: $stepsColor;
+      }
+
+      .done {
+        border-radius: $circle;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+
+        .icon {
+          color: $correctColor;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

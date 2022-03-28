@@ -5,6 +5,7 @@
     },
     "extends": [
         "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "airbnb",
@@ -20,30 +21,25 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "prettier"
-    ],
+    "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"],
-        "react/jsx-filename-extension": [ "warn", { "extensions": [".tsx"] } ],
-        "prettier/prettier": [ 
+        "prettier/prettier": [
             "error",
             {
                 "singleQuote": true,
                 "trailingComma": "es5", // no trailing commas in type parameters
                 "tabWidth": 4,
                 "semi": false,
-                "endOfLine": "auto"
+                "endOfLine": "auto",
+                "useTabs": false
             }
-        ], // disable conflict between eslint and prettier by rewriting eslint rules 
+        ], // disable conflict between eslint and prettier by rewriting eslint rules
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "off"
-        ], // disabling couse the same rule inside typescript extension
+        "@typescript-eslint/no-unused-vars": ["off"], // disabling couse the same rule inside typescript extension
         "import/prefer-default-export": "off",
         "no-param-reassign": "off", // couse using redux-toolkit
         "jsx-a11y/click-events-have-key-events": "off",
@@ -51,12 +47,13 @@
         "no-alert": "off",
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/ban-types": "off"
+        "@typescript-eslint/ban-types": "off",
+        "jsx-a11y/no-static-element-interactions": "off"
     },
     "settings": {
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
-          },
+        },
         "import/resolver": {
             "typescript": {}
         }

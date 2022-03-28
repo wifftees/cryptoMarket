@@ -1,0 +1,49 @@
+@import "../../../styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: $bold;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px 16px;
+    align-items: center;
+    font-weight: $light;
+
+    .propsNames {
+      display: flex;
+      gap: 100px;
+
+      .tokenPropsNames {
+        display: flex;
+        gap: 32px;
+      }
+    }
+  }
+}
+
+.empty {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 32px;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: $bold;
+  }
+}

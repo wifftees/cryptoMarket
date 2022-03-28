@@ -2,16 +2,18 @@ const prod = process.env.NODE_ENV === 'production'
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpackMockServer = require("webpack-mock-server")
+const path = require('path')
 
 module.exports = {
     mode: prod ? 'production' : 'development',
     entry: {
-        'app': './src/index.tsx',
-        'css': './src/styles/main.css'
+        'app': path.resolve(__dirname, 'src', 'index.tsx'),
+        'css': path.resolve(__dirname, 'src/styles', 'main.css'),
     },
     output: {
         filename: '[name].js',
-        path: `${__dirname}/dist`
+        path: `${__dirname}/dist`,
+        publicPath: '/'
     },
     module: {
         rules: [

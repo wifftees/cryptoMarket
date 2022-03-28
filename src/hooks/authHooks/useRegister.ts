@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { RegisterFormValues } from '../../types/User'
-import { sendRegistrationValues } from '../../api/authApi'
-import { DialogData } from '../../components/dialog-window/DialogWindow'
+import { useAppDispatch, useAppSelector } from '../redux'
+import { getAuth } from '../../redux/selectors/authSelectors'
+import { sendRegistrationValues } from '../../redux/actions/authActions'
+import authSlice from '../../redux/reducers/authReducer'
 
 export const useRegisterData = () => {
-    const [dialogData, setDialogData] = useState<DialogData>({
-        open: false,
-        title: '',
-        message: '',
-    })
+    const { open, isError, message, title } = useAppSelector(getAuth)
+    const { closeAuthState } = authSlice.actions
+    const dispatch = useAppDispatch()
+    const history = useNavigate()
+
+    const dialogData = { open, title, message }
 
     const registerInitialValues: RegisterFormValues = {
         firstName: '',
@@ -18,22 +21,16 @@ export const useRegisterData = () => {
         confirm: '',
     }
 
-    const submit = async (values: RegisterFormValues) => {
-        const response = await sendRegistrationValues({
-            firstName: values.firstName,
-            secondName: values.secondName,
-            email: values.email,
-            password: values.password,
-        })
-        setDialogData({
-            open: true,
-            title: response.error ? 'Error' : 'Successful',
-            message: response.message,
-            error: Boolean(response.error),
-        })
+    const handleClose = () => {
+        dispatch(closeAuthState())
+        if (!isError) {
+            history('/login')
+        }
     }
 
-    const handleClose = () => setDialogData({ open: false })
+    const submit = async (values: RegisterFormValues) => {
+        dispatch(sendRegistrationValues(values))
+    }
 
     return {
         registerInitialValues,

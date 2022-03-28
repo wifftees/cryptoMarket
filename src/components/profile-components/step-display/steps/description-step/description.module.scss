@@ -1,0 +1,45 @@
+@import "../../../../../styles/variables";
+
+.step {
+  border: 1px solid $captionColor;
+  border-radius: $rounded;
+  cursor: pointer;
+
+  .opened {
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    justify-content: space-between;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-weight: $medium;
+
+      span {
+        color: $stepsColor;
+      }
+    }
+
+    .input {
+      display: flex;
+      gap: 24px;
+    }
+
+    .submit,
+    .button {
+      font-weight: $bold;
+      background-color: $mainColor;
+      color: white;
+      border-radius: $rounded;
+      transition: 0.1s ease-in;
+      cursor: pointer;
+      padding: 16px 32px 16px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

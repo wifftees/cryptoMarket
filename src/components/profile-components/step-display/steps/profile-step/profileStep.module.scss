@@ -1,0 +1,7 @@
+@import "../../../../../styles/variables";
+
+.step {
+  border: 1px solid $captionColor;
+  border-radius: $rounded;
+  cursor: pointer;
+}

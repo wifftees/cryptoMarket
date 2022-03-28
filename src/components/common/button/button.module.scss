@@ -1,0 +1,23 @@
+@import "../../../styles/variables";
+
+.button {
+  font-weight: $bold;
+  background-color: $mainColor;
+  color: white;
+  border-radius: $rounded;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+  padding: 16px 32px 16px;
+  width: fit-content;
+}
+
+.buttonDisabled {
+  background-color: $borderColor;
+  font-weight: $bold;
+  color: white;
+  border-radius: $rounded;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+  padding: 16px 32px 16px;
+  width: fit-content;
+}
