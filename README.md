@@ -1,4 +1,4 @@
-# cryptoMarket
+# Crypto Market
 Crypto marketplace built with React  
 ## How to run
 1. Clone repository and open it in code editor
