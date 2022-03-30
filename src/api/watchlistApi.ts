@@ -8,7 +8,7 @@ export const wathlistAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     tagTypes: ['Watchlist'],
     endpoints: (build) => ({
-        fetchUserWatchlist: build.query<WatchlistToken[], void>({
+        fetchUserWatchlist: build.query<WatchlistToken[], string>({
             query: () => ({
                 url: '/get-user-watchlist',
                 params: {

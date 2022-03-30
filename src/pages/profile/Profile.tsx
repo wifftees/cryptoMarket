@@ -1,17 +1,22 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './profile.module.scss'
 import StepDisplay from '../../components/profile-components/step-display/StepDisplay'
 import Watchlist from '../../components/profile-components/watchlist/Watchlist'
-import { useAppSelector } from '../../hooks/redux'
-import { getUser } from '../../redux/selectors/userSelectors'
+import { currentUserExists } from '../../services/auth.service'
 
 export default function Profile() {
     const history = useNavigate()
-    const { isUser } = useAppSelector(getUser)
+    const isUser = currentUserExists()
+
+    useEffect(() => {
+        if (!isUser) {
+            history('/login')
+        }
+    })
 
     if (!isUser) {
-        history('/login')
+        return <h1>Access denied</h1>
     }
 
     return (

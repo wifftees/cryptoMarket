@@ -7,7 +7,7 @@ import { useFetchUserWatchlistQuery } from '../../../api/watchlistApi'
 import { countTotalAmount } from '../../../helpers/countTotalAmount'
 
 export default function Watchlist() {
-    const { data: tokens, isLoading, error } = useFetchUserWatchlistQuery()
+    const { data: tokens, isLoading, error } = useFetchUserWatchlistQuery('')
     if (isLoading) {
         return <CircularProgress />
     }

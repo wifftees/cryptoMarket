@@ -18,7 +18,9 @@ export default function MarketTable({
     isLoading,
 }: MarketTableProps) {
     const defineEnabledProp = (id: string) =>
-        Boolean(watchListTokens?.find((token) => token.id === id))
+        watchListTokens
+            ? Boolean(watchListTokens.find((token) => token.id === id))
+            : false
 
     return marketList?.length ? (
         <table className={styles.table}>
@@ -44,6 +46,7 @@ export default function MarketTable({
                             currentPrice={token.currentPrice}
                             change={token.change}
                             enabled={defineEnabledProp(token.id)}
+                            noEffect={!watchListTokens}
                         />
                     ))
                 ) : (

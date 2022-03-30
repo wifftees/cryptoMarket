@@ -10,7 +10,7 @@
         "plugin:@typescript-eslint/recommended",
         "airbnb",
         "airbnb-typescript",
-        "prettier" // last because avoiding conflicts
+        "prettier" // last because of avoiding conflicts
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,17 +23,7 @@
     },
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": true,
-                "trailingComma": "es5", // no trailing commas in type parameters
-                "tabWidth": 4,
-                "semi": false,
-                "endOfLine": "auto",
-                "useTabs": false
-            }
-        ], // disable conflict between eslint and prettier by rewriting eslint rules
+        "prettier/prettier": ["error"],
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],

@@ -10,7 +10,7 @@ import { CircularProgress } from '@mui/material'
 import styles from './styles/app.module.scss'
 import routes from './constants/routes'
 import Navbar from './components/navbar/Navbar'
-import { store } from './redux/store/store'
+import { store } from './redux/store'
 import Header from './components/header/Header'
 
 export default function AppContainer() {

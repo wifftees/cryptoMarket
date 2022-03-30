@@ -1,17 +1,40 @@
-import { useNavigate } from 'react-router'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSendRegisterFormValuesMutation } from '../../api/authApi'
+import { DialogData } from '../../components/common/dialog-window/DialogWindow'
 import { RegisterFormValues } from '../../types/User'
-import { useAppDispatch, useAppSelector } from '../redux'
-import { getAuth } from '../../redux/selectors/authSelectors'
-import { sendRegistrationValues } from '../../redux/actions/authActions'
-import authSlice from '../../redux/reducers/authReducer'
 
 export const useRegisterData = () => {
-    const { open, isError, message, title } = useAppSelector(getAuth)
-    const { closeAuthState } = authSlice.actions
-    const dispatch = useAppDispatch()
+    const [dialogData, setDialogData] = useState<DialogData>({
+        open: false,
+    })
+    const [sendRegisterFormValues, { data, error }] =
+        useSendRegisterFormValuesMutation()
     const history = useNavigate()
-
-    const dialogData = { open, title, message }
+    console.log(data)
+    useEffect(() => {
+        if (data || error) {
+            if (error && 'data' in error) {
+                const { data: errorData, status } = error
+                const { message } = errorData as { message: string }
+                setDialogData({
+                    open: true,
+                    title: `${status} Error`,
+                    message,
+                })
+            } else if (data) {
+                setDialogData({
+                    open: true,
+                    title: 'Success',
+                    message: data,
+                })
+            }
+        } else {
+            setDialogData({
+                open: false,
+            })
+        }
+    }, [data, error])
 
     const registerInitialValues: RegisterFormValues = {
         firstName: '',
@@ -22,14 +45,14 @@ export const useRegisterData = () => {
     }
 
     const handleClose = () => {
-        dispatch(closeAuthState())
-        if (!isError) {
+        if (!error) {
             history('/login')
         }
+        setDialogData({ open: false })
     }
 
     const submit = async (values: RegisterFormValues) => {
-        dispatch(sendRegistrationValues(values))
+        sendRegisterFormValues(values)
     }
 
     return {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { useDeleteWatchlistTokenMutation } from '../../../api/watchlistApi'
 import { capitalizeFirstLetter } from '../../../helpers/stringHelpers'
 import { WatchlistToken } from '../../../types/Token'

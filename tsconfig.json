@@ -20,7 +20,7 @@
         "noUnusedLocals": true,
         "incremental": true,
         "noFallthroughCasesInSwitch": true,
-        "outDir": "build", // set folder where would store compiled ts code
+        "outDir": "dist", // set folder where would store compiled ts code
         "plugins": [
             { "name": "typescript-plugin-css-modules" } // allow typescript work properly with css/sass modules
         ]

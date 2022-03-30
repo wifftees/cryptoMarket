@@ -53,25 +53,22 @@ export default webpackMockServer.add((app, helper) => {
 
             if (!foundUser) {
                 res.status(400).send({
-                    error: true,
                     message: 'Email or password are incorrect',
                 })
             }
 
             if (foundUser?.password !== password) {
                 res.status(400).send({
-                    error: true,
                     message: 'Email or password are incorrect',
                 })
             }
 
             res.status(200).send({
-                error: false,
+                values: _req.body,
                 message: 'You have successfully loged in',
             })
         } catch (error) {
             res.status(500).send({
-                error: true,
                 message: 'Server encountered with unexpected error',
             })
         }
@@ -101,9 +98,8 @@ export default webpackMockServer.add((app, helper) => {
                 message: 'User not found',
             })
         } else {
-            // TODO validate description
             foundUser.description = description
-            res.send('some avatar')
+            res.send(foundUser.description)
         }
     })
 

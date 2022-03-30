@@ -6,13 +6,14 @@ import {
 
 export const useToggleWatchlistEntry = (
     tokenId: string | undefined,
-    initialState: boolean
+    initialState: boolean,
+    noEffect = false
 ) => {
     const [isEnabled, setEnabled] = useState(initialState)
     const [addWatchlistToken] = useAddWatchlistTokenMutation()
     const [deleteWatchlistToken] = useDeleteWatchlistTokenMutation()
 
-    if (!tokenId)
+    if (!tokenId || noEffect)
         return {
             handleToggling: () => {},
             isEnabled: false,

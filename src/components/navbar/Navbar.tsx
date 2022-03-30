@@ -1,23 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from './navbar.module.scss'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { getUser } from '../../redux/selectors/userSelectors'
 import { currentUserExists } from '../../services/auth.service'
-import userSlice from '../../redux/reducers/userReducer'
 import { navbarRoutes } from '../../constants/navbar'
 
 export default function Navbar() {
-    const { isUser } = useAppSelector(getUser)
-    const { signInUserInLocalStorage } = userSlice.actions
-
-    const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        if (currentUserExists()) {
-            dispatch(signInUserInLocalStorage())
-        }
-    }, [])
+    const isUser = currentUserExists()
     return (
         <nav className={styles.navbar}>
             <div className={styles.title}>
@@ -38,7 +26,7 @@ export default function Navbar() {
                         </div>
                     ))}
                 </div>
-                {isUser ? null : (
+                {!isUser && (
                     <div className={styles.auth}>
                         <Link to="/register">
                             <div className={styles.button}>Register</div>

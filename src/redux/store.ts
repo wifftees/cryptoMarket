@@ -1,18 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { marketAPI } from '../../api/marketApi'
-import { tokenAPI } from '../../api/tokenApi'
-import { userAPI } from '../../api/userApi'
-import { wathlistAPI } from '../../api/watchlistApi'
-import authSlice from '../reducers/authReducer'
-import userSlice from '../reducers/userReducer'
+import { authAPI } from '../api/authApi'
+import { marketAPI } from '../api/marketApi'
+import { tokenAPI } from '../api/tokenApi'
+import { userAPI } from '../api/userApi'
+import { wathlistAPI } from '../api/watchlistApi'
 
 const reducers = {
-    user: userSlice.reducer,
-    auth: authSlice.reducer,
     [wathlistAPI.reducerPath]: wathlistAPI.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [marketAPI.reducerPath]: marketAPI.reducer,
     [tokenAPI.reducerPath]: tokenAPI.reducer,
+    [authAPI.reducerPath]: authAPI.reducer,
 }
 
 const rootReducer = combineReducers({
@@ -26,7 +24,8 @@ export const store = configureStore({
             wathlistAPI.middleware,
             userAPI.middleware,
             marketAPI.middleware,
-            tokenAPI.middleware
+            tokenAPI.middleware,
+            authAPI.middleware
         ),
 })
 

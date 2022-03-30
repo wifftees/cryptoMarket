@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { capitalizeFirstLetter } from '../../../helpers/stringHelpers'
 import { useToggleWatchlistEntry } from '../../../hooks/useToggleWatchlistEntry'
 import { Token } from '../../../types/Token'
@@ -11,6 +11,7 @@ type TokenBoxProps = Omit<
     'dayPrice' | 'weekPrice' | 'monthPrice' | 'tags' | 'nameSymbol' | 'tradable'
 > & {
     enabled: boolean
+    noEffect: boolean
 }
 
 export default function TokenBox({
@@ -21,8 +22,13 @@ export default function TokenBox({
     currentPrice,
     change,
     enabled,
+    noEffect,
 }: TokenBoxProps) {
-    const { handleToggling, isEnabled } = useToggleWatchlistEntry(id, enabled)
+    const { handleToggling, isEnabled } = useToggleWatchlistEntry(
+        id,
+        enabled,
+        noEffect
+    )
     const history = useNavigate()
 
     const hanleTokenClick = () => {

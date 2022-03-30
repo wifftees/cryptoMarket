@@ -8,10 +8,6 @@ export type FilterFormOutput = {
         to: number
     }
     tradable: boolean
-    // watchlist: {
-    //     inWatchlist: boolean
-    //     notInWatchlist: boolean
-    // }
 }
 
 export const defaultFilterConfig: FilterFormOutput = {
@@ -24,8 +20,4 @@ export const defaultFilterConfig: FilterFormOutput = {
         to: 10000000,
     },
     tradable: true,
-    // watchlist: {
-    //     inWatchlist: true,
-    //     notInWatchlist: true,
-    // },
 }

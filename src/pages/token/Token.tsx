@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Chart as ChartJS, registerables } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { useFetchTokenQuery } from '../../api/tokenApi'
@@ -12,8 +12,11 @@ import { capitalizeFirstLetter } from '../../helpers/stringHelpers'
 import { useFetchWatchlistTokenQuery } from '../../api/watchlistApi'
 import { useToggleWatchlistEntry } from '../../hooks/useToggleWatchlistEntry'
 import Dropdown from '../../components/common/dropdown/Dropdown'
+import { currentUserExists } from '../../services/auth.service'
 
 export default function Token() {
+    const history = useNavigate()
+    const isUser = currentUserExists()
     const [dropdownValue, setDropdownValue] = useState<string>('24h')
     const { token } = useParams()
     const {
@@ -21,14 +24,15 @@ export default function Token() {
         isLoading,
         error,
     } = useFetchTokenQuery(token || skipToken)
+    const fetchWatchlistData = token && isUser ? token : skipToken
     const { data: watchlistToken, isLoading: watchlistLoading } =
-        useFetchWatchlistTokenQuery(token || skipToken)
+        useFetchWatchlistTokenQuery(fetchWatchlistData)
     const { handleToggling, isEnabled } = useToggleWatchlistEntry(
         tokenData?.id,
         Boolean(watchlistToken)
     )
     if (!token) {
-        throw new Error('Token does not exists in params data')
+        history('/error')
     }
     if (isLoading || watchlistLoading) {
         return <CircularProgress />
