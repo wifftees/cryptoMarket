@@ -1,5 +1,5 @@
 # Crypto Market
-Crypto marketplace built with React  
+Client side only React application, with webpack mock server
 ## How to run
 1. Clone repository and open it in code editor
 2. Run npm install (yarn install) for installing all required packages
