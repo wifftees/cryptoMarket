@@ -1,7 +1,7 @@
 import React from 'react'
 import { CircularProgress } from '@mui/material'
 import Border from '../../common/border/Border'
-import styles from './watchList.module.scss'
+import styles from './watchlist.module.scss'
 import WatchlistTokenBox from '../../tokens/watchlist-token/WatchlistToken'
 import { useFetchUserWatchlistQuery } from '../../../api/watchlistApi'
 import { countTotalAmount } from '../../../helpers/countTotalAmount'
